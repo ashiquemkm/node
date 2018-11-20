@@ -1,3 +1,5 @@
+
+var fs=require('fs')
 const name=require('http')
 
 const server=name.createServer(function(req,res){
@@ -15,24 +17,19 @@ const server=name.createServer(function(req,res){
     }
     if(req.url=='/friends')
     {
-            var fs=require('fs')
-
-            var data = fs.readFileSync('1.txt','utf8',);
-            console.log(data);
-
-            
-
-            var fs=require('fs')
 
             var data = fs.readFileSync('1.txt','utf8',function(err,data){
             if(err) console.log('erro',err);
-            else console.log(' new the data is=',data);
-
-            
-
-});
-console.log('new 2 the data is =', data);
+            else res.write(data);
+				 res.end();
+			});
+			
+		res.write(data);
+		res.end();	
+	console.log('new 2 the data is =', data);
     }
+	
+	
 });
 server.listen(7000);
 console.log('listening on port 7000...')
