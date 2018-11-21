@@ -1,7 +1,5 @@
-
-var fs=require('fs')
 const name=require('http')
-
+var fs=require('fs')
 const server=name.createServer(function(req,res){
     if(req.url=='/'){
 
@@ -18,14 +16,13 @@ const server=name.createServer(function(req,res){
     if(req.url=='/friends')
     {
 
-            var data = fs.readFileSync('1.txt','utf8',function(err,data){
+            var data = fs.readFile('1.txt','utf8',function(err,data){
             if(err) console.log('erro',err);
             else res.write(data);
 				 res.end();
 			});
 			
-		res.write(data);
-		res.end();	
+			
 	console.log('new 2 the data is =', data);
     }
 	
